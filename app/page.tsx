@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { motion } from 'framer-motion'
 import { ArrowRight, Code, Cpu, Globe, Rocket, Terminal, Shield } from 'lucide-react'
