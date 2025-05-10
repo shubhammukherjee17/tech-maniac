@@ -3,6 +3,7 @@ import { Inter, Poiret_One } from 'next/font/google'
 import './globals.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Chatbot from './components/Chatbot'
 
 const inter = Inter({ subsets: ['latin'] })
 const poiretOne = Poiret_One({ 
@@ -30,6 +31,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Chatbot />
         </div>
       </body>
     </html>
