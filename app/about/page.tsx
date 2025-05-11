@@ -15,10 +15,10 @@ export default function AboutPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             whileHover={{ scale: 1.02 }}
-            className="relative group"
+            className="relative group flex justify-center"
           >
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+            <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-2xl ring-4 ring-blue-600/20 dark:ring-blue-500/20">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 rounded-full" />
               <Image
                 src="/images/image.jpg"
                 alt="Shubham Mukherjee"
@@ -26,9 +26,9 @@ export default function AboutPage() {
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
                 priority
               />
-              <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                <p className="text-lg font-semibold">Full Stack Developer</p>
-                <p className="text-sm">Based in India</p>
+              <div className="absolute inset-x-0 bottom-8 text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                <p className="text-lg font-semibold drop-shadow-lg">Full Stack Developer</p>
+                <p className="text-sm drop-shadow-lg">Based in India</p>
               </div>
             </div>
           </motion.div>

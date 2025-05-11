@@ -6,7 +6,7 @@ export const blogs = [
     id: '1',
     title: 'Modern React Best Practices 2024',
     summary: 'Learn the latest React patterns, hooks, and performance optimization techniques.',
-    content: 'The Details will be provided soon...',
+    content: '\nIntroduction\n\nThe Details will be provided soon...',
     image: '/images/react-best-practices.jpg',
     date: '2025-01-15',
     tags: ['Web Development', 'React', 'JavaScript']
