@@ -6,7 +6,7 @@ export const blogs = [
     id: '1',
     title: 'Modern React Best Practices 2024',
     summary: 'Learn the latest React patterns, hooks, and performance optimization techniques.',
-    content: '\nIntroduction\n\nThe Details will be provided soon...',
+    content: '\nIntroduction\n\nThe Details will be provided soon...\n\n## React Patterns\n\n### Functional Components\nFunctional components are the recommended way to create components in React. They are simpler and easier to read than class components.\n\n### Hooks\nHooks allow you to use state and other React features without writing a class.\n\n## Performance Optimization\n\n### Memoization\nMemoization is a technique to optimize performance by caching the results of expensive function calls.\n\n### Code Splitting\nCode splitting allows you to split your code into smaller chunks, which can be loaded on demand.',
     image: '/images/react-best-practices.jpg',
     date: '2025-01-15',
     tags: ['Web Development', 'React', 'JavaScript']
