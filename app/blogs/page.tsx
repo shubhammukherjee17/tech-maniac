@@ -62,7 +62,7 @@ export default function BlogsPage() {
             <div className="flex flex-wrap justify-center gap-2">
               {categories.map((category) => (
                 <motion.button
-                  key={category}
+                  key={`category-${category}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedCategory(category)}
@@ -82,12 +82,21 @@ export default function BlogsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.map((blog, i) => (
             <motion.div
-              key={blog.id}
+              key={`blog-${blog.id}-${i}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
+              className="h-full"
             >
-              <BlogCard blog={blog} />
+              <BlogCard 
+                blog={{
+                  ...blog,
+                  summary: blog.summary || '',
+                  content: blog.content || '',
+                  image: blog.image || '',
+                  tags: blog.tags || []
+                }} 
+              />
             </motion.div>
           ))}
         </div>
@@ -96,9 +105,21 @@ export default function BlogsPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center text-gray-500 dark:text-gray-400 mt-12"
+            className="text-center text-gray-500 dark:text-gray-400 mt-12 py-8"
           >
-            No blogs found matching your criteria.
+            <div className="flex flex-col items-center gap-4">
+              <Search className="w-12 h-12 text-gray-400" />
+              <p>No blogs found matching your criteria.</p>
+              <button
+                onClick={() => {
+                  setSearchQuery('')
+                  setSelectedCategory('All')
+                }}
+                className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline"
+              >
+                Clear filters
+              </button>
+            </div>
           </motion.div>
         )}
       </div>

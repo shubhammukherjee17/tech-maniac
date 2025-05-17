@@ -12,6 +12,7 @@
     "@google/generative-ai": "^0.24.0",
     "blog-website": "file:",
     "framer-motion": "^12.6.3",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.487.0",
     "next": "15.2.4",
     "next-themes": "^0.4.6",
@@ -19,7 +20,9 @@
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
-    "remark-gfm": "^4.0.1"
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
