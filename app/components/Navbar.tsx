@@ -11,36 +11,39 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0B]/80 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold">
+          <Link 
+            href="/" 
+            className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+          >
             TechManiac
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
-              Home
-            </Link>
-            <Link href="/blogs" className="hover:text-blue-600 transition-colors">
-              Blogs
-            </Link>
-            <Link href="/about" className="hover:text-blue-600 transition-colors">
-              About
-            </Link>
-            <Link href="/contact" className="hover:text-blue-600 transition-colors">
-              Contact
-            </Link>
+            {['Home', 'Blogs', 'About', 'Contact'].map((item) => (
+              <Link
+                key={item}
+                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                className="text-gray-300 hover:text-white transition-colors relative group"
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -51,37 +54,26 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-gray-900"
+            className="md:hidden bg-[#0A0A0B]/95 backdrop-blur-xl border-b border-white/10"
           >
             <div className="px-4 pt-2 pb-3 space-y-1">
-              <Link
-                href="/"
-                className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
-              <Link
-                href="/blogs"
-                className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={toggleMenu}
-              >
-                Blogs
-              </Link>
-              <Link
-                href="/about"
-                className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={toggleMenu}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-                onClick={toggleMenu}
-              >
-                Contact
-              </Link>
+              {['Home', 'Blogs', 'About', 'Contact'].map((item) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                >
+                  <Link
+                    href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                    className="block px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+                    onClick={toggleMenu}
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         )}
