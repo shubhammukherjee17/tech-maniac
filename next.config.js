@@ -4,40 +4,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'cdn.hashnode.com',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'upload.wikimedia.org',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.shutterstock.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.gartner.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'reactjs.org',
-      },
-      {
-        protocol: 'https',
-        hostname: 'ethereum.org',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.docker.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'developer.android.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.kaspersky.com',
-      }
     ],
   },
 }

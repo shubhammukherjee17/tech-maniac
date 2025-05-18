@@ -88,7 +88,7 @@ const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
 Following these best practices will help you build more maintainable, performant, and scalable React applications in 2024.
     `,
-    image: '/images/react-best-practices.jpg',
+    image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1470&auto=format&fit=crop',
     date: '2025-01-15',
     tags: ['Web Development', 'React', 'JavaScript']
   },
@@ -126,7 +126,7 @@ Combine static and dynamic content seamlessly...
 
 [Continue with detailed sections for each feature...]
     `,
-    image: '/images/nextjs-14.jpg',
+    image: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=1470&auto=format&fit=crop',
     date: '2025-01-20',
     tags: ['Web Development', 'Next.js', 'React']
   },
@@ -186,7 +186,7 @@ const MyComponent = () => {
 ## Conclusion
 Choose based on your team's expertise and project requirements.
     `,
-    image: '/images/flutter-vs-react-native.jpg',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1470&auto=format&fit=crop',
     date: '2025-01-25',
     tags: ['Mobile Development', 'Flutter', 'React Native']
   },
@@ -218,7 +218,7 @@ struct ContentView: View {
 
 Learn about @State, @Binding, and @ObservedObject.
     `,
-    image: '/images/swiftui.jpg',
+    image: 'https://images.unsplash.com/photo-1563206767-5b18f218e8de?q=80&w=1470&auto=format&fit=crop',
     date: '2025-01-30',
     tags: ['Mobile Development', 'iOS', 'SwiftUI']
   },
@@ -248,7 +248,7 @@ model = tf.keras.Sequential([
 
 Learn about epochs, batches, and optimization.
     `,
-    image: '/images/tensorflow.jpg',
+    image: 'https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1470&auto=format&fit=crop',
     date: '2025-02-01',
     tags: ['AI & ML', 'TensorFlow', 'Python']
   },
@@ -276,7 +276,7 @@ response = client.chat.completions.create(
 ## Implementation Strategies
 ![Implementation](https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1470&auto=format&fit=crop)
     `,
-    image: '/images/gpt4.jpg',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1470&auto=format&fit=crop',
     date: '2025-02-05',
     tags: ['AI & ML', 'GPT-4', 'NLP']
   },
@@ -308,7 +308,7 @@ model = tf.keras.Sequential([
 
 Learn about epochs, batches, and optimization.
     `,
-    image: '/images/tensorflow.jpg',
+    image: 'https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1470&auto=format&fit=crop',
     date: '2025-02-01',
     tags: ['AI & ML', 'TensorFlow', 'Python']
   },
@@ -343,7 +343,7 @@ response = client.chat.completions.create(
 - Code Generation and Analysis
 - Data Analysis and Insights
     `,
-    image: '/images/gpt4.jpg',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1470&auto=format&fit=crop',
     date: '2025-02-05',
     tags: ['AI & ML', 'GPT-4', 'NLP']
   },
@@ -404,7 +404,7 @@ exports.handler = async (event) => {
 - API Gateway integration
 - Encryption at rest
     `,
-    image: '/images/aws-lambda.jpg',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1472&auto=format&fit=crop',
     date: '2025-02-10',
     tags: ['Cloud Computing', 'AWS', 'Serverless']
   },
@@ -448,7 +448,7 @@ blob_service_client = BlobServiceClient.from_connection_string(conn_str)
 - Region-based pricing
 - Data transfer costs
     `,
-    image: '/images/cloud-comparison.jpg',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1472&auto=format&fit=crop',
     date: '2025-02-15',
     tags: ['Cloud Computing', 'Azure', 'AWS']
   },
@@ -497,7 +497,7 @@ CMD ["nginx", "-g", "daemon off;"]
 - Resource limits
 - Network optimization
     `,
-    image: '/images/docker.jpg',
+    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1470&auto=format&fit=crop',
     date: '2025-02-20',
     tags: ['DevOps', 'Docker', 'Containers']
   },
@@ -544,7 +544,7 @@ jobs:
 - Artifact management
 - Deployment automation
     `,
-    image: '/images/github-actions.jpg',
+    image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=1470&auto=format&fit=crop',
     date: '2025-02-25',
     tags: ['DevOps', 'CI/CD', 'GitHub']
   },
@@ -587,7 +587,7 @@ app.use(helmet.contentSecurityPolicy({
 - Origin verification
 - Request validation
     `,
-    image: '/images/web-security.jpg',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1470&auto=format&fit=crop',
     date: '2025-03-01',
     tags: ['Cybersecurity', 'Web Security', 'OWASP']
   },
@@ -630,7 +630,7 @@ nmap -sS -sV -p- target.com
 - Responsible disclosure
 - Continuous learning
     `,
-    image: '/images/ethical-hacking.jpg',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1470&auto=format&fit=crop',
     date: '2025-03-05',
     tags: ['Cybersecurity', 'Ethical Hacking', 'Security Tools']
   }
