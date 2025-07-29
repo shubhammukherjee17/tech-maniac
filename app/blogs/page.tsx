@@ -112,7 +112,7 @@ export default function BlogsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <BlogCard blog={blog} />
+              <BlogCard blog={{ ...blog, summary: blog.summary ?? '' }} />
             </motion.div>
           ))}
         </motion.div>

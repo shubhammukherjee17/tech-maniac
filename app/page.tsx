@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { motion } from 'framer-motion'
 import { ArrowRight, Code, Cpu, Globe, Rocket, Terminal, Shield } from 'lucide-react'
@@ -45,146 +44,65 @@ export default function Home() {
     }
   ]
 
-  const springConfig = {
-    type: "spring",
-    stiffness: 400,
-    damping: 15,
-    mass: 0.8
-  }
-
-  // For tap animations, we'll use a faster config
-  const tapConfig = {
-    type: "spring",
-    stiffness: 600,
-    damping: 15,
-    mass: 0.5
-  }
-
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#0A0A0B] text-white relative">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute w-full h-full bg-[url('/grid.svg')] opacity-20" />
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1.2, 1, 1.2],
-              rotate: [90, 0, 90],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-            className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-cyan-500/10 via-blue-500/10 to-purple-500/10 blur-3xl"
-          />
-        </div>
-
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
         {/* Hero Section */}
-        <section className="relative py-20 sm:py-28 md:py-32 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <section className="relative py-20 sm:py-28 md:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={springConfig}
+              transition={{ duration: 0.6 }}
               className="text-center max-w-4xl mx-auto"
             >
               <motion.div 
                 className="mb-6 inline-block"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ ...springConfig, delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <div className="relative">
-                  <motion.div
-                    className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75"
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      opacity: [0.7, 0.9, 0.7],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
-                  <div className="relative px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium text-gray-200">
-                    Welcome to the Future of Tech
-                  </div>
+                <div className="px-6 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400">
+                  Welcome to the Future of Tech
                 </div>
               </motion.div>
 
               <motion.h1 
-                className="text-5xl sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 leading-tight"
+                className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-gray-100 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...springConfig, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Welcome to  {"TechManiac"}
-                <span className="relative inline-block">
-                  
-                  <motion.div
-                    className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600"
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    animate={{ scaleX: 1, opacity: 1 }}
-                    transition={{ ...springConfig, delay: 0.5 }}
-                  />
-                </span>
+                Welcome to{" "}
+                <span className="text-blue-600 dark:text-blue-400">TechManiac</span>
               </motion.h1>
               
               <motion.p 
-                className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-12 sm:mb-16"
+                className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 mb-12 sm:mb-16 max-w-3xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...springConfig, delay: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
-                Your gateway to the latest in technology,{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                  development
-                </span>
-                , and{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                  innovation
-                </span>
+                Your gateway to the latest in technology, development, and innovation
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...springConfig, delay: 0.4 }}
-                className="flex justify-center gap-4"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex justify-center"
               >
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="relative group"
                 >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-200" />
                   <Link 
                     href="/blogs"
-                    className="relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 
-                    text-white rounded-full font-medium transition-all duration-200 text-lg group-hover:shadow-lg group-hover:shadow-blue-500/25"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 
+                    text-white rounded-lg font-medium transition-all duration-200 text-lg shadow-sm hover:shadow-md"
                   >
                     Explore Blogs
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      whileTap={{ x: -2 }}
-                      transition={{ type: "spring", stiffness: 800, damping: 15 }}
-                    >
-                      <ArrowRight className="w-6 h-6" />
-                    </motion.div>
+                    <ArrowRight className="w-5 h-5" />
                   </Link>
                 </motion.div>
               </motion.div>
@@ -193,68 +111,51 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 sm:py-24 md:py-32 relative">
+        <section className="py-20 sm:py-24 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={springConfig}
-              className="text-center mb-16 sm:mb-20"
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
             >
               <motion.span
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...springConfig, delay: 0.1 }}
-                className="inline-block px-4 py-1.5 bg-white/5 backdrop-blur-sm rounded-full text-sm font-medium text-gray-300 mb-4"
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="inline-block px-4 py-1.5 bg-blue-50 dark:bg-blue-900/20 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400 mb-4"
               >
                 What We Cover
               </motion.span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
                 Explore Our Content
               </h2>
-              <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                 Comprehensive guides and insights across various tech domains
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, i) => (
                 <motion.div
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ ...springConfig, delay: i * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.03,
-                    y: -5,
-                    transition: springConfig
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group relative p-6 sm:p-8 rounded-2xl bg-white/5 backdrop-blur-xl
-                    border border-white/10 hover:border-white/20 shadow-xl hover:shadow-2xl
-                    transition-all duration-300"
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  whileHover={{ y: -4 }}
+                  className="group p-8 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200 dark:border-gray-700"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <motion.div
-                    whileHover={{ rotate: 5, scale: 1.1 }}
-                    whileTap={{ scale: 0.95, rotate: -5 }}
-                    transition={springConfig}
-                    className={`relative w-14 h-14 rounded-xl flex items-center justify-center 
-                      bg-gradient-to-r ${feature.gradient} text-white mb-6 group-hover:shadow-lg transition-shadow duration-300`}
-                  >
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-r ${feature.gradient} text-white mb-6`}>
                     {feature.icon}
-                  </motion.div>
+                  </div>
                   
-                  <h3 className="relative text-xl sm:text-2xl font-semibold mb-4 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {feature.title}
                   </h3>
                   
-                  <p className="relative text-base sm:text-lg text-gray-300">
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                     {feature.description}
                   </p>
-
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/0 to-transparent group-hover:via-white/20 transition-all duration-300" />
                 </motion.div>
               ))}
             </div>
