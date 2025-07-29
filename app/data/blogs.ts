@@ -283,7 +283,7 @@ response = client.chat.completions.create(
 
   // AI & ML
   {
-    id: '5',
+    id: '13',
     title: 'Getting Started with TensorFlow',
     summary: 'Begin your journey into machine learning with TensorFlow.',
     content: `
@@ -313,7 +313,7 @@ Learn about epochs, batches, and optimization.
     tags: ['AI & ML', 'TensorFlow', 'Python']
   },
   {
-    id: '6',
+    id: '14',
     title: 'Practical Applications of GPT-4',
     summary: 'Real-world applications and implementation of GPT-4 in business.',
     content: `

@@ -4,11 +4,11 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/github.css";
-import PageTransition from "./PageTransition";
+import "highlight.js/styles/github-dark.css";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Calendar, Clock } from 'lucide-react';
+import Link from "next/link";
+import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { Blog } from "../types/blog";
 
 interface BlogContentProps {
@@ -16,69 +16,129 @@ interface BlogContentProps {
 }
 
 export default function BlogContent({ blog }: BlogContentProps) {
-  const springConfig = {
-    type: "spring" as const,
-    stiffness: 400,
-    damping: 15,
-    mass: 0.8
-  };
-
   return (
-    <PageTransition>
-      <div className="min-h-screen bg-[#0A0A0B] text-white relative">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute w-full h-full bg-[url('/grid.svg')] opacity-20" />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl"
-          />
-          <motion.div
-            animate={{ scale: [1.2, 1, 1.2], rotate: [90, 0, 90] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-l from-cyan-500/10 via-blue-500/10 to-purple-500/10 blur-3xl"
-          />
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300">
+      {/* Simple Header with Back Button */}
+      <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm sticky top-16 z-40">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Link 
+            href="/blogs" 
+            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors text-sm font-medium"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to articles
+          </Link>
         </div>
+      </header>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="space-y-8">
-            {/* Hero Section */}
-            <div className="relative h-[400px] rounded-2xl overflow-hidden">
-              <Image src={blog.image} alt={blog.title} fill className="object-cover" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  {blog.title}
-                </motion.h1>
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="flex items-center gap-4 mb-4 text-sm text-gray-300">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 flex-shrink-0" />
-                    <time dateTime={blog.date}>{blog.date}</time>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 flex-shrink-0" />
-                    <span>5 min read</span>
-                  </div>
-                </motion.div>
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="flex flex-wrap gap-2">
-                  {blog.tags.map((tag, index) => (
-                    <motion.span key={tag} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.1 }} className="px-3 py-1.5 text-sm bg-white/10 backdrop-blur-xl text-white rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300">
-                      {tag}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              </div>
+      {/* Clean Article Layout */}
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Article Header */}
+        <header className="mb-12">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-6"
+          >
+            {blog.title}
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.1 }}
+            className="flex flex-wrap items-center gap-6 text-sm text-gray-600 dark:text-gray-400 mb-8"
+          >
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <time dateTime={blog.date}>{new Date(blog.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</time>
             </div>
-            {/* Content */}
-            <motion.article initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="prose dark:prose-invert prose-lg max-w-none">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
-                {blog.content}
-              </ReactMarkdown>
-            </motion.article>
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4" />
+              <span>5 min read</span>
+            </div>
           </motion.div>
-        </div>
-      </div>
-    </PageTransition>
+
+          {/* Tags */}
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap gap-2 mb-10"
+          >
+            {blog.tags.map((tag, index) => (
+              <span 
+                key={tag} 
+                className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700"
+              >
+                {tag}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Featured Image */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.3 }}
+            className="relative w-full h-64 sm:h-80 lg:h-96 rounded-lg overflow-hidden mb-12 shadow-lg"
+          >
+            <Image 
+              src={blog.image} 
+              alt={blog.title} 
+              fill 
+              className="object-cover" 
+              priority 
+            />
+          </motion.div>
+        </header>
+
+        {/* Article Content */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ delay: 0.4 }}
+          className="prose prose-lg dark:prose-invert max-w-none 
+                     prose-headings:text-gray-900 dark:prose-headings:text-gray-100
+                     prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed
+                     prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+                     prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+                     prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 
+                     prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+                     prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-gray-700
+                     prose-blockquote:border-l-blue-500 prose-blockquote:bg-blue-50 dark:prose-blockquote:bg-blue-950/20 
+                     prose-blockquote:px-4 prose-blockquote:py-2 prose-blockquote:rounded-r-lg
+                     prose-img:rounded-lg prose-img:shadow-md
+                     prose-li:text-gray-700 dark:prose-li:text-gray-300"
+        >
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]} 
+            rehypePlugins={[rehypeHighlight]}
+          >
+            {blog.content}
+          </ReactMarkdown>
+        </motion.div>
+
+        {/* Back to Articles Footer */}
+        <motion.footer 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ delay: 0.6 }}
+          className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800"
+        >
+          <Link 
+            href="/blogs" 
+            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors font-medium"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to all articles
+          </Link>
+        </motion.footer>
+      </article>
+    </div>
   );
 }
