@@ -10,9 +10,14 @@ interface PageProps {
 
 export default async function BlogPost({ params }: PageProps) {
   const { id } = await params;
-  const blog = blogs.find((b) => b.id === id);
+  let blog = blogs.find((b) => b.id === id);
 
   if (!blog) return notFound();
+
+  // Ensure summary is always a string
+  if (blog && typeof blog.summary !== "string") {
+    blog = { ...blog, summary: "" };
+  }
 
   return <BlogContent blog={blog} />;
 }
