@@ -14,7 +14,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('system')
+  const [theme, setThemeState] = useState<Theme>('light')
   const [mounted, setMounted] = useState(false)
 
   // Handle system theme changes
@@ -63,9 +63,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const toggleTheme = () => {
     setThemeState(prev => {
-      if (prev === 'system') return 'light'
-      if (prev === 'light') return 'dark'
-      return 'system'
+      return prev === 'light' ? 'dark' : 'light'
     })
   }
 

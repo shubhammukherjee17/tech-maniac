@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import ReactMarkdown from "react-markdown";
@@ -70,7 +69,7 @@ export default function BlogContent({ blog }: BlogContentProps) {
             transition={{ delay: 0.2 }}
             className="flex flex-wrap gap-2 mb-10"
           >
-            {blog.tags.map((tag, index) => (
+            {blog.tags.map((tag) => (
               <span 
                 key={tag} 
                 className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full border border-gray-200 dark:border-gray-700"

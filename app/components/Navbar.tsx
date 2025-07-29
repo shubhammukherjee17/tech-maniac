@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Sun, Moon, Monitor } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../providers/ThemeProvider'
 
@@ -19,7 +19,7 @@ export default function Navbar() {
       case 'dark':
         return <Moon className="w-5 h-5" />
       default:
-        return <Monitor className="w-5 h-5" />
+        return <Sun className="w-5 h-5" />
     }
   }
 
@@ -53,7 +53,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
-              title={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
               {getThemeIcon()}
             </motion.button>
@@ -67,7 +67,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
-              title={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
               {getThemeIcon()}
             </motion.button>
