@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Chatbot from './components/Chatbot'
+import { ThemeProvider } from './providers/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 const poiretOne = Poiret_One({ 
@@ -25,14 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${poiretOne.variable}`}>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-grow pt-16">
-            {children}
-          </main>
-          <Footer />
-          <Chatbot />
-        </div>
+        <ThemeProvider>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow pt-16">
+              {children}
+            </main>
+            <Footer />
+            <Chatbot />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

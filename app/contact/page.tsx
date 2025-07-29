@@ -85,7 +85,7 @@ export default function ContactPage() {
                   {
                     icon: MessageSquare,
                     title: 'Social Media',
-                    content: '@ImShubham1817 on Twitter',
+                    content: '@ItsShubhamDev on Twitter',
                     color: 'purple'
                   },
                   {

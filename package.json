@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
-    "blog-website": "file:",
     "framer-motion": "^12.6.3",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.487.0",

@@ -2,13 +2,26 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Sun, Moon, Monitor } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../providers/ThemeProvider'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   const toggleMenu = () => setIsOpen(!isOpen)
+
+  const getThemeIcon = () => {
+    switch (theme) {
+      case 'light':
+        return <Sun className="w-5 h-5" />
+      case 'dark':
+        return <Moon className="w-5 h-5" />
+      default:
+        return <Monitor className="w-5 h-5" />
+    }
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0B]/80 backdrop-blur-xl border-b border-white/10">
@@ -22,28 +35,54 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {['Home', 'Blogs', 'About', 'Contact'].map((item) => (
-              <Link
-                key={item}
-                href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                className="text-gray-300 hover:text-white transition-colors relative group"
-              >
-                {item}
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex space-x-8">
+              {['Home', 'Blogs', 'About', 'Contact'].map((item) => (
+                <Link
+                  key={item}
+                  href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                  className="text-gray-300 hover:text-white transition-colors relative group"
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </Link>
+              ))}
+            </div>
+            
+            {/* Theme Toggle */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors"
+              title={`Current theme: ${theme}`}
+            >
+              {getThemeIcon()}
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={toggleMenu}
-            className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </motion.button>
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile Theme Toggle */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300"
+              title={`Current theme: ${theme}`}
+            >
+              {getThemeIcon()}
+            </motion.button>
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleMenu}
+              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </motion.button>
+          </div>
         </div>
       </div>
 
