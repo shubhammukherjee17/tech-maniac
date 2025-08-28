@@ -2,26 +2,17 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Sun, Moon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useTheme } from '../providers/ThemeProvider'
+// Theme removed
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const { theme, toggleTheme } = useTheme()
+  
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
-  const getThemeIcon = () => {
-    switch (theme) {
-      case 'light':
-        return <Sun className="w-5 h-5" />
-      case 'dark':
-        return <Moon className="w-5 h-5" />
-      default:
-        return <Sun className="w-5 h-5" />
-    }
-  }
+  
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
@@ -47,30 +38,12 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            {/* Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
-              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {getThemeIcon()}
-            </motion.button>
+            
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            {/* Mobile Theme Toggle */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors"
-              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {getThemeIcon()}
-            </motion.button>
+            
             
             <motion.button
               whileHover={{ scale: 1.05 }}
