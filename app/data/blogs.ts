@@ -284,68 +284,60 @@ response = client.chat.completions.create(
   // AI & ML
   {
     id: '13',
-    title: 'Getting Started with TensorFlow',
-    summary: 'Begin your journey into machine learning with TensorFlow.',
+    title: 'Intro to Scikit-learn for Beginners',
+    summary: 'Build and evaluate your first ML models with scikit-learn.',
     content: `
-# Getting Started with TensorFlow
+# Intro to Scikit-learn for Beginners
 
-![TensorFlow](https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1470&auto=format&fit=crop)
+![Scikit-learn](https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1470&auto=format&fit=crop)
 
-## Introduction to Machine Learning
+## Getting Started
 
-### Basic Neural Network
+Install scikit-learn and build your first classifier.
+
+### Example: Iris Classifier
 \`\`\`python
-import tensorflow as tf
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestClassifier
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dense(10, activation='softmax')
-])
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = RandomForestClassifier(n_estimators=200, random_state=42)
+model.fit(X_train, y_train)
+print('Accuracy:', accuracy_score(y_test, model.predict(X_test)))
 \`\`\`
-
-## Training Models
-![Training](https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1470&auto=format&fit=crop)
-
-Learn about epochs, batches, and optimization.
     `,
-    image: 'https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1470&auto=format&fit=crop',
-    date: '2025-02-01',
-    tags: ['AI & ML', 'TensorFlow', 'Python']
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1470&auto=format&fit=crop',
+    date: '2025-02-03',
+    tags: ['AI & ML', 'Python', 'Scikit-learn']
   },
   {
     id: '14',
-    title: 'Practical Applications of GPT-4',
-    summary: 'Real-world applications and implementation of GPT-4 in business.',
+    title: 'LLM Prompt Engineering Essentials',
+    summary: 'Techniques to elicit reliable responses from large language models.',
     content: `
-# Practical Applications of GPT-4
+# LLM Prompt Engineering Essentials
 
-![GPT-4 Applications](https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1470&auto=format&fit=crop)
+![Prompt Engineering](https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1470&auto=format&fit=crop)
 
-## Business Use Cases
+## Core Patterns
+- Role prompting
+- Few-shot examples
+- Chain-of-thought (with care)
+- Tool usage
 
-### Content Generation
+### Example
 \`\`\`python
-from openai import OpenAI
-
-client = OpenAI()
-response = client.chat.completions.create(
-    model="gpt-4",
-    messages=[{"role": "user", "content": "Write a blog post about AI"}]
-)
+system = 'You are a helpful assistant.'
+user = 'List 3 performance tips for React.'
 \`\`\`
-
-## Implementation Strategies
-![Implementation](https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1470&auto=format&fit=crop)
-
-### Real-world Applications
-- Content Creation and Editing
-- Customer Service Automation
-- Code Generation and Analysis
-- Data Analysis and Insights
     `,
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1470&auto=format&fit=crop',
-    date: '2025-02-05',
-    tags: ['AI & ML', 'GPT-4', 'NLP']
+    image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1470&auto=format&fit=crop',
+    date: '2025-02-06',
+    tags: ['AI & ML', 'NLP', 'Prompt Engineering']
   },
 
   // Cloud Computing
@@ -1738,5 +1730,146 @@ Quantum computing is transitioning from research to practical applications in 20
     image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1470&auto=format&fit=crop',
     date: '2025-07-01',
     tags: ['Quantum Computing', 'AI & ML', 'Programming Languages', 'Emerging Tech']
+  }
+  ,
+  {
+    id: '21',
+    title: 'TypeScript 5.x: Patterns for Large React Codebases',
+    summary: 'Scalable type-safe patterns, project structure, and DX wins for React + TS.',
+    content: `
+# TypeScript 5.x: Patterns for Large React Codebases
+
+![TypeScript](https://images.unsplash.com/photo-1527430253228-e93688616381?q=80&w=1470&auto=format&fit=crop)
+
+## Key Ideas
+- Discriminated unions for state machines
+- Branded types for IDs
+- Exhaustive switch and never checks
+
+### Example
+\`\`\`ts
+type Status =
+  | { kind: 'idle' }
+  | { kind: 'loading' }
+  | { kind: 'success'; data: string }
+  | { kind: 'error'; message: string };
+
+function render(status: Status) {
+  switch (status.kind) {
+    case 'idle':
+    case 'loading':
+    case 'success':
+    case 'error':
+      return;
+    default: ((x: never) => x)(status);
+  }
+}
+\`\`\`
+    `,
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1470&auto=format&fit=crop',
+    date: '2025-07-28',
+    tags: ['Web Development', 'TypeScript', 'React']
+  },
+  {
+    id: '22',
+    title: 'Kubernetes Essentials for Developers',
+    summary: 'K8s concepts developers should know to run and debug apps confidently.',
+    content: `
+# Kubernetes Essentials for Developers
+
+![Kubernetes](https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=1471&auto=format&fit=crop)
+
+## Core Concepts
+- Pods, Deployments, Services
+- Ingress vs Gateway
+- Requests, limits, and probes
+
+### Deployment
+\`\`\`yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: app
+          image: app:1.0.0
+          ports:
+            - containerPort: 3000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+\`\`\`
+    `,
+    image: 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=1466&auto=format&fit=crop',
+    date: '2025-07-22',
+    tags: ['DevOps', 'Kubernetes', 'Cloud Computing']
+  },
+  {
+    id: '23',
+    title: 'Building Accessible UI: A11y for Modern Web Apps',
+    summary: 'Practical accessibility techniques: semantics, focus, aria, and testing.',
+    content: `
+# Building Accessible UI: A11y for Modern Web Apps
+
+![Accessibility](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1470&auto=format&fit=crop)
+
+## Practices
+- Semantic HTML first
+- Keyboard-first navigation
+- Visible focus states
+- Color contrast and prefers-reduced-motion
+
+### Example: Dialog
+\`\`\`jsx
+<dialog aria-labelledby="title" aria-modal="true" open>
+  <h2 id="title">Confirm action</h2>
+  <p>Are you sure?</p>
+  <button autoFocus>Confirm</button>
+  <button>Cancel</button>
+</dialog>
+\`\`\`
+    `,
+    image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=1470&auto=format&fit=crop',
+    date: '2025-07-18',
+    tags: ['Web Development', 'Accessibility', 'Frontend']
+  },
+  {
+    id: '24',
+    title: 'Secure by Default: OWASP Top 10 for React Apps',
+    summary: 'Map OWASP Top 10 to concrete React patterns and middleware.',
+    content: `
+# Secure by Default: OWASP Top 10 for React Apps
+
+![Web Security](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1470&auto=format&fit=crop)
+
+## Tips
+- Escape and sanitize untrusted HTML
+- Implement CSP and trusted types
+- Protect cookies with SameSite and HttpOnly
+- Validate inputs server-side
+
+### Example: CSP Header (Next.js)
+\`\`\`ts
+export const middleware = () => {
+  const headers = new Headers();
+  headers.set('Content-Security-Policy', "default-src 'self'; img-src 'self' https: data:; script-src 'self'; style-src 'self' 'unsafe-inline'");
+  return new Response(null, { headers });
+};
+\`\`\`
+    `,
+    image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=1470&auto=format&fit=crop',
+    date: '2025-07-12',
+    tags: ['Cybersecurity', 'Web Security', 'React']
   }
 ]
