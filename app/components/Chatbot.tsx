@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { MessageSquare, X, Send, Loader2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { blogs } from '../data/blogs'
 
 interface Message {
   content: string
@@ -36,38 +37,33 @@ export default function Chatbot() {
     setInput('')
     setIsTyping(true)
 
-    // Common tech-related responses
-    const responses = {
-      greetings: ["Hi!", "Hello!", "Hey there!", "Greetings!"],
-      programming: "I can help you with programming questions across various languages like JavaScript, Python, React, and more.",
-      web: "I can assist with web development topics including frontend frameworks, backend technologies, and best practices.",
-      mobile: "I can guide you through mobile app development using React Native, Flutter, or native platforms.",
-      ai: "I can explain AI and machine learning concepts, frameworks, and implementation details.",
-      cloud: "I can help with cloud computing platforms like AWS, Azure, or Google Cloud.",
-      devops: "I can assist with DevOps practices, tools, and automation strategies.",
-      default: "I'm here to help with any tech-related questions you might have. Feel free to ask about programming, web development, mobile apps, AI, cloud computing, or DevOps!"
-    }
-
-    // Simple response logic
-    const input_lower = input.toLowerCase()
+    // Answer using site content (blogs)
+    const query = input.trim().toLowerCase()
     let response = ""
 
-    if (input_lower.includes("hello") || input_lower.includes("hi") || input_lower.includes("hey")) {
-      response = responses.greetings[Math.floor(Math.random() * responses.greetings.length)]
-    } else if (input_lower.includes("programming") || input_lower.includes("code")) {
-      response = responses.programming
-    } else if (input_lower.includes("web") || input_lower.includes("website")) {
-      response = responses.web
-    } else if (input_lower.includes("mobile") || input_lower.includes("app")) {
-      response = responses.mobile
-    } else if (input_lower.includes("ai") || input_lower.includes("machine learning")) {
-      response = responses.ai
-    } else if (input_lower.includes("cloud")) {
-      response = responses.cloud
-    } else if (input_lower.includes("devops")) {
-      response = responses.devops
+    const isGreeting = ["hello", "hi", "hey", "greetings"].some((g) => query.includes(g))
+
+    const matched = blogs
+      .map((b) => ({
+        blog: b,
+        score:
+          (b.title.toLowerCase().includes(query) ? 5 : 0) +
+          (b.tags.some((t) => t.toLowerCase().includes(query)) ? 3 : 0) +
+          ((b.summary || '').toLowerCase().includes(query) ? 2 : 0) +
+          (b.content.toLowerCase().includes(query) ? 1 : 0),
+      }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5)
+      .map((x) => x.blog)
+
+    if (matched.length > 0) {
+      const list = matched.map((b) => `- ${b.title}`).join('\n')
+      response = `${isGreeting ? 'Hello! ' : ''}Here are some articles that match your query:\n${list}\n\nAsk for a title to open it, or refine your question.`
     } else {
-      response = responses.default
+      response = isGreeting
+        ? "Hello! How can I help you today? Try asking about 'Next.js', 'Docker', or 'Edge Computing'."
+        : "I couldn't find an exact match. Try keywords like 'React', 'TypeScript', 'Kubernetes', or 'Web Security'."
     }
 
     // Simulate typing delay
