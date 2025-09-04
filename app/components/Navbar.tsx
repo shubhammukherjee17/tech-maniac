@@ -4,15 +4,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-// Theme removed
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   
-
   const toggleMenu = () => setIsOpen(!isOpen)
-
-  
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
@@ -38,12 +34,10 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            
             
             <motion.button
               whileHover={{ scale: 1.05 }}
