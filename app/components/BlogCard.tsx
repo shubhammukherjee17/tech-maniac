@@ -8,7 +8,7 @@ import { Blog } from '../types/blog'
 
 interface BlogCardProps {
   blog: Blog
-}
+} 
 
 export default function BlogCard({ blog }: BlogCardProps) {
   return (
